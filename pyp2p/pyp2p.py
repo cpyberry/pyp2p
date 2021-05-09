@@ -31,3 +31,9 @@ class Pyp2p:
 	def send_object(self, data: Any) -> None:
 		message = self.create_message.create_message_object(data)
 		self.sock.send(message)
+
+	def recv_content(self) -> bytes:
+		packed_length = self.sock.recv(struct.calcsize(self.format_char))
+		length = struct.unpack(ENDIANNESS + self.format_char, packed_length)
+		content = self.sock.recv(length)
+		return content
