@@ -68,3 +68,8 @@ class ParseMessage:
 		parsed_message_str = cls.parse_message_str(data, encoding)
 		parsed_message_dict = json.loads(parsed_message_str)
 		return parsed_message_dict
+
+	@staticmethod
+	def parse_message_object(data: bytes) -> Any:
+		parsed_message = pickle.loads(data)
+		return parsed_message
