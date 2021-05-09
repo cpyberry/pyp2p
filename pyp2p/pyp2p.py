@@ -11,4 +11,7 @@ class Pyp2p:
 	"""send and receive various objects
 	"""
 
-	pass
+	def __init__(self, sock: socket.socket, format_char="I"):
+		self.sock = sock
+		self.format_char = format_char
+		self.create_message = CreateMessage(format_char)
