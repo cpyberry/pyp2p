@@ -32,6 +32,11 @@ class Pyp2p:
 		message = self.create_message.create_message_object(data)
 		self.sock.send(message)
 
+	def recv_str(self, encoding="utf-8") -> str:
+		content = self.recv_content()
+		parsed_message = ParseMessage.parse_message_str(content, encoding)
+		return parsed_message
+
 	def recv_content(self) -> bytes:
 		packed_length = self.sock.recv(struct.calcsize(self.format_char))
 		length = struct.unpack(ENDIANNESS + self.format_char, packed_length)
