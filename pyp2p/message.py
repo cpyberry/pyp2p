@@ -30,3 +30,8 @@ class CreateMessage:
 		data_bytes = data.encode(encoding)
 		message = self.prepend_message_length(data_bytes)
 		return message
+
+	def create_message_int(self, data: int, format_char="I") -> bytes:
+		data_bytes = struct.pack(ENDIANNESS + format_char, data)
+		message = self.prepend_message_length(data_bytes)
+		return message
