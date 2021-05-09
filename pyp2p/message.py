@@ -52,4 +52,8 @@ class CreateMessage:
 class ParseMessage:
 	"""parse recved binary from client or server
 	"""
-	pass
+
+	@staticmethod
+	def parse_message_str(data: bytes, encoding="utf-8") -> str:
+		parsed_message = data.decode(encoding)
+		return parsed_message
