@@ -1,3 +1,13 @@
+"""
+Copyright 2021 cpyberry
+https://github.com/cpyberry/pyp2p
+
+cpyberry
+email: cpyberry222@gmail.com
+github: https://github.com/cpyberry
+"""
+
+
 import json
 import pickle
 import struct
