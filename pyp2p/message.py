@@ -57,3 +57,8 @@ class ParseMessage:
 	def parse_message_str(data: bytes, encoding="utf-8") -> str:
 		parsed_message = data.decode(encoding)
 		return parsed_message
+
+	@staticmethod
+	def parse_message_int(data: bytes, format_char="I") -> int:
+		parsed_message = struct.unpack(ENDIANNESS + format_char, data)
+		return parsed_message
