@@ -1,3 +1,4 @@
+import json
 import struct
 
 
@@ -34,4 +35,8 @@ class CreateMessage:
 	def create_message_int(self, data: int, format_char="I") -> bytes:
 		data_bytes = struct.pack(ENDIANNESS + format_char, data)
 		message = self.prepend_message_length(data_bytes)
+		return message
+
+	def create_message_dict(self, data: dict, encoding="utf-8") -> bytes:
+		message = self.create_message_str(json.dumps(data))
 		return message
