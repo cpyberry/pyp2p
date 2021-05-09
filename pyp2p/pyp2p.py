@@ -19,3 +19,7 @@ class Pyp2p:
 	def send_str(self, data: str, encoding="utf-8") -> None:
 		message = self.create_message.create_message_str(data, encoding)
 		self.sock.send(message)
+
+	def send_int(self, data: int, format_char="I") -> None:
+		message = self.create_message.create_message_int(data, format_char)
+		self.sock.send(message)
