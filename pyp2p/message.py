@@ -1,5 +1,7 @@
 import json
+import pickle
 import struct
+from typing import Any
 
 
 ENDIANNESS = ">"
@@ -39,4 +41,9 @@ class CreateMessage:
 
 	def create_message_dict(self, data: dict, encoding="utf-8") -> bytes:
 		message = self.create_message_str(json.dumps(data))
+		return message
+
+	def create_message_object(self, data: Any) -> bytes:
+		data_bytes = pickle.dumps(data)
+		message = self.prepend_message_length(data_bytes)
 		return message
