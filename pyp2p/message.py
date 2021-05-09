@@ -47,3 +47,29 @@ class CreateMessage:
 		data_bytes = pickle.dumps(data)
 		message = self.prepend_message_length(data_bytes)
 		return message
+
+
+class ParseMessage:
+	"""parse recved binary from client or server
+	"""
+
+	@staticmethod
+	def parse_message_str(data: bytes, encoding="utf-8") -> str:
+		parsed_message = data.decode(encoding)
+		return parsed_message
+
+	@staticmethod
+	def parse_message_int(data: bytes, format_char="I") -> int:
+		parsed_message = struct.unpack(ENDIANNESS + format_char, data)
+		return parsed_message
+
+	@classmethod
+	def parse_message_dict(cls, data: bytes, encoding="utf-8") -> dict:
+		parsed_message_str = cls.parse_message_str(data, encoding)
+		parsed_message_dict = json.loads(parsed_message_str)
+		return parsed_message_dict
+
+	@staticmethod
+	def parse_message_object(data: bytes) -> Any:
+		parsed_message = pickle.loads(data)
+		return parsed_message
