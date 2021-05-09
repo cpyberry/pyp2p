@@ -70,7 +70,7 @@ class ParseMessage:
 
 	@staticmethod
 	def parse_message_int(data: bytes, format_char="I") -> int:
-		parsed_message = struct.unpack(ENDIANNESS + format_char, data)
+		parsed_message = struct.unpack(ENDIANNESS + format_char, data)[0]
 		return parsed_message
 
 	@classmethod
