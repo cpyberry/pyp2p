@@ -40,7 +40,7 @@ class CreateMessage:
 		return message
 
 	def create_message_dict(self, data: dict, encoding="utf-8") -> bytes:
-		message = self.create_message_str(json.dumps(data))
+		message = self.create_message_str(json.dumps(data), encoding)
 		return message
 
 	def create_message_object(self, data: Any) -> bytes:
