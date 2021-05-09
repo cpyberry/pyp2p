@@ -47,3 +47,9 @@ class CreateMessage:
 		data_bytes = pickle.dumps(data)
 		message = self.prepend_message_length(data_bytes)
 		return message
+
+
+class ParseMessage:
+	"""parse recved binary from client or server
+	"""
+	pass
