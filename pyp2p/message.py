@@ -25,3 +25,8 @@ class CreateMessage:
 		length = len(data)
 		message = struct.pack(self.format, length) + data
 		return message
+
+	def create_message_str(self, data: str, encoding="utf-8") -> bytes:
+		data_bytes = data.encode(encoding)
+		message = self.prepend_message_length(data_bytes)
+		return message
